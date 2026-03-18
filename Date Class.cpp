@@ -11,7 +11,7 @@ Date::Date(int m, int d, int y) { // Constructor with default values
         day = d;
         year = y;
     } else {
-        month = 1;
+		month = 1; // Returns to default date if the provided date is invalid
         day = 1;
         year = 1900;
     }
