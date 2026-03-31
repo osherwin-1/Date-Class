@@ -98,3 +98,26 @@ Date& Date::operator++() { // Prefix increment operator to advance the date by o
     }
     return *this;
 }
+Date Date::operator++(int) { // Postfix increment operator to advance the date by one day
+    Date temp = *this;
+    ++(*this);
+    return temp;
+}
+
+Date& Date::operator--() { // Prefix decrement operator to move the date back by one day
+    day--;
+    if (day < 1) {
+        month--;
+        if (month < 1) {
+            month = 12;
+            year--;
+        }
+        day = lastDayOfMonth();
+    }
+    return *this;
+}
+Date Date::operator--(int) { // Postfix decrement operator to move the date back by one day
+    Date temp = *this;
+    --(*this);
+    return temp;
+}
