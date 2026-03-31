@@ -36,6 +36,7 @@ public:
 	int lastDayOfMonth() const; // Function to get the last day of the month
 	int	lastDayOfMonth(int m, int y) const; // Overloaded function to get the last day of a specific month and year
 
+	string mmToMonth() const; // Function to convert the month number to the month name
 	string formatMMDDYYYY() const; // Function to format the date as MM/DD/YYYY
 	string formatMonthDayYear() const; // Function to format the date as Month Day, Year
 	string formatDayMonthYear() const; // Function to format the date as Day Month Year
