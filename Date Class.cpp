@@ -73,7 +73,7 @@ string Date::formatMMDDYYYY() const {
     return to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 }
 
-static string mmToMonth(int month) {
+string Date::mmToMonth(int month) {
     const string months[] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
     return months[month - 1];
 }
