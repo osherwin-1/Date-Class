@@ -1,7 +1,7 @@
 #pragma once
 #define DATE_H
 #include <iostream>
-
+#include <string>
 class Date {
 private:
 	int month;
