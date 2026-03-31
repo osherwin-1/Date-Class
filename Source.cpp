@@ -64,7 +64,6 @@ int main()
 	cout << "Prefix --: " << --yearEnd << endl;    // 12/31/2024
 
 	Date inputDate; // Test for the overloaded input operator to read a date from the user
-	cout << "Enter a date in the format MM DD YYYY: ";
 	cin >> inputDate;
 	cout << "Date entered:" << inputDate << endl;
 	cout << "Formatted date (MM/DD/YYYY): " << inputDate.formatMMDDYYYY() << endl;
