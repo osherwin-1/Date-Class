@@ -41,20 +41,26 @@ int main()
 	cout << d3.formatMMDDYYYY() << " - " << d4.formatMMDDYYYY()
 		<< " = " << (d3 - d4) << " days (should result in 815)" << endl;
 	
-	cout << "Increment & Decrement Tests (Leap Year)" << endl;
-
+	cout << "Increment & Decrement Tests - Leap Year" << endl; // Tests for the increment and decrement operators to ensure they correctly handle leap years and year boundaries
 	Date leapY(2, 29, 2008);
 	cout << "Original date: " << leapY << endl;
-
 	cout << "Prefix ++: " << ++leapY << endl;   // 3/1/2008
 	cout << "Prefix --: " << --leapY << endl;   // 2/29/2008
-
 	cout << "Postfix ++: " << leapY++ << endl;  // 2/29/2008
 	cout << "After postfix, date: " << leapY << endl; // 3/1/2008
-
 	cout << "Postfix --: " << leapY-- << endl;  // 3/1/2008
 	cout << "After postfix, date: " << leapY << endl; // 2/29/2008
 	
 	
+	cout << "Increment & Decrement Tests - Year Boundary" << endl;
+	Date yearEnd(12, 31, 2024);
+	cout << "Original date: " << yearEnd << endl;
+	cout << "Postfix ++: " << yearEnd++ << endl;   // 12/31/2024
+	cout << "After postfix, date: " << yearEnd << endl; // 1/1/2025
+	cout << "Postfix --: " << yearEnd-- << endl;   // 1/1/2025
+	cout << "After postfix, date: " << yearEnd << endl; // 12/31/2024
+
+	cout << "Prefix ++: " << ++yearEnd << endl;    // 1/1/2025
+	cout << "Prefix --: " << --yearEnd << endl;    // 12/31/2024
 	return 0;
 }
