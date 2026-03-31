@@ -121,3 +121,55 @@ Date Date::operator--(int) { // Postfix decrement operator to move the date back
     --(*this);
     return temp;
 }
+
+static int toDays(int m, int d, int y) { // Helper function to convert a date to the number of days since 01/01/1900
+    int days = d;
+
+    for (int i = 1; i < m; i++) {
+		switch (i) { // Switch statement to add the number of days in the months before the given month
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            days += 31; break;
+        case 4: case 6: case 9: case 11:
+            days += 30; break;
+        case 2:
+            days += ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) ? 29 : 28;
+            break;
+        }
+    }
+
+    for (int i = 1; i < y; i++) {
+        days += ((i % 4 == 0 && i % 100 != 0) || (i % 400 == 0)) ? 366 : 365;
+    }
+
+    return days;
+}
+int Date::operator-(const Date& other) const { // Subtraction operator to calculate the difference in days between two dates
+    int days1 = toDays(month, day, year);
+    int days2 = toDays(other.month, other.day, other.year);
+    return days1 - days2;
+}
+
+ostream& operator<<(ostream& out, const Date& date) { // Overloaded output operator to print the date in Month Day, Year format
+    static const string months[] = {
+        "", "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    };
+
+    out << months[date.month] << " " << date.day << ", " << date.year;
+    return out;
+}
+
+istream& operator>>(istream& in, Date& date) { // Overloaded input operator to read the date in MM DD YYYY format
+    int m, d, y;
+    cout << "Enter month day year (MM DD YYYY): ";
+    in >> m >> d >> y;
+
+    if (date.dateValid(m, d, y)) {
+        date.setDate(m, d, y);
+    }
+    else {
+        cout << "Invalid date. Keeping previous value.\n";
+    }
+
+    return in;
+}
